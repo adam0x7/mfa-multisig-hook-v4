@@ -1,4 +1,4 @@
-# MultiSigSwapHook for Uniswap v4
+# MultiSigSwapHook for Uniswap v4 🦄
 
 The `MultiSigSwapHook` contract is a specialized implementation designed to integrate with Uniswap v4's innovative hook system. In line with Uniswap's vision for v4, this contract allows for a flexible and customized approach to swaps by enforcing multiple signature approvals before a swap can occur.
 
