@@ -14,8 +14,6 @@ contract MultiSigSwapHook is BaseHook {
 
     using PoolIdLibrary for IPoolManager.PoolKey;
 
-    uint256 public beforeSwapCount;
-    uint256 public afterSwapCount;
 
     modifier onlyOwner() {
         require(msg.sender == owner, "Caller is not the owner");
@@ -62,7 +60,6 @@ contract MultiSigSwapHook is BaseHook {
         bytes32 swapHash = keccak256(abi.encode(swapParams));
         require(swapApprovals[swapHash].count >= requiredSignatures, "Insufficient approvals for swap");
 
-        beforeSwapCount++;
         return BaseHook.beforeSwap.selector;
     }
 
@@ -74,7 +71,6 @@ contract MultiSigSwapHook is BaseHook {
         bytes32 swapHash = keccak256(abi.encode(swapParams));
         delete swapApprovals[swapHash]; // Clears the swap approval for the swapHash
 
-        afterSwapCount++;
         emit SwapCompleted(swapHash);
         return BaseHook.afterSwap.selector;
     }
